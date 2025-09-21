@@ -1,0 +1,69 @@
+import { useState, useEffect } from "react";
+import API from "../api";
+
+export default function Appointments() {
+  const [appointments, setAppointments] = useState([]);
+  const [services, setServices] = useState([]);
+  const [serviceId, setServiceId] = useState("");
+  const [appointmentTime, setAppointmentTime] = useState("");
+  const [message, setMessage] = useState("");
+
+  // Fetch appointments
+  useEffect(() => {
+    API.get("/appointments")
+      .then(res => setAppointments(res.data))
+      .catch(() => setMessage("Error loading appointments"));
+
+    API.get("/services")
+      .then(res => setServices(res.data))
+      .catch(() => setMessage("Error loading services"));
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    API.post("/appointments", {
+      service_id: serviceId,
+      appointment_time: appointmentTime
+    })
+      .then(() => {
+        setMessage("Appointment booked!");
+        return API.get("/appointments");
+      })
+      .then(res => setAppointments(res.data))
+      .catch(() => setMessage("Error booking appointment"));
+  };
+
+  return (
+    <div>
+      <h2>My Appointments</h2>
+      <form onSubmit={handleSubmit}>
+        <select value={serviceId} onChange={e => setServiceId(e.target.value)} required>
+          <option value="">Select Service</option>
+          {services.map(s => (
+            <option key={s.id} value={s.id}>{s.name} - ${s.price}</option>
+          ))}
+        </select>
+        <input
+          type="datetime-local"
+          value={appointmentTime}
+          onChange={e => setAppointmentTime(e.target.value.replace("T", " ") + ":00")}
+          required
+        />
+        <button type="submit">Book Appointment</button>
+      </form>
+
+      {appointments.length === 0 ? (
+        <p>No appointments yet.</p>
+      ) : (
+        <ul>
+          {appointments.map(a => (
+            <li key={a.id}>
+              {a.service} on {a.appointment_time}
+            </li>
+          ))}
+        </ul>
+      )}
+      <p>{message}</p>
+    </div>
+  );
+}
