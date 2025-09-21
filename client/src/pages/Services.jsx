@@ -25,19 +25,28 @@ export default function Services() {
   };
 
   return (
-    <div>
-      <h2>Services</h2>
+    <div className="card">
+      <h2>Available Services</h2>
+
       <input
         type="datetime-local"
+        className="form-input"
         value={appointmentTime}
         onChange={(e) => setAppointmentTime(e.target.value)}
       />
-      {services.map(s => (
-        <div key={s.id} style={{ border: "1px solid #ccc", padding: "10px", margin: "5px" }}>
-          <p>{s.name} - ${s.price}</p>
-          <button onClick={() => bookAppointment(s.id)}>Book</button>
-        </div>
-      ))}
+
+      <div className="services-grid">
+        {services.map((s) => (
+          <div key={s.id} className="service-card">
+            <p className="service-title">{s.name}</p>
+            <p className="service-price">${s.price}</p>
+            <button className="btn" onClick={() => bookAppointment(s.id)}>
+              Book
+            </button>
+          </div>
+        ))}
+      </div>
+
       <p>{message}</p>
     </div>
   );

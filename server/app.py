@@ -122,12 +122,35 @@ class AppointmentList(Resource):
         db.session.commit()
         return {"message": "Appointment created successfully"}, 201
 
+class AppointmentResource(Resource):
+    @jwt_required()
+    def delete(self, appointment_id):
+        appointment = Appointment.query.get(appointment_id)
+        if not appointment:
+            return {"error": "Appointment not found"}, 404
+
+        db.session.delete(appointment)
+        db.session.commit()
+        return {"message": "Appointment deleted successfully"}, 200
+class Profile(Resource):
+    @jwt_required()
+    def get(self):
+        customer_id = int(get_jwt_identity())
+        customer = Customer.query.get_or_404(customer_id)
+        return {
+            "id": customer.id,
+            "name": customer.name,
+            "phone_number": customer.phone_number
+        }, 200
 
 # Register resources with endpoints
 api.add_resource(Register, "/register")
 api.add_resource(Login, "/login")
+api.add_resource(Profile, "/me")
 api.add_resource(ServiceList, "/services")
 api.add_resource(AppointmentList, "/appointments")
+api.add_resource(AppointmentResource, "/appointments/<int:appointment_id>")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import API from "../api";
 
 export default function Login() {
@@ -20,24 +20,33 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
+    <div className="card form-card">
+      <h2 className="form-title">Login</h2>
+      <form onSubmit={handleLogin} className="form">
         <input
           type="text"
           placeholder="Phone number"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
+          required
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="btn">
+          Login
+        </button>
       </form>
-      <p>{message}</p>
+
+      {message && <p className="message error">{message}</p>}
+
+      <p className="form-footer">
+        Don’t have an account? <Link to="/register">Register</Link>
+      </p>
     </div>
   );
 }

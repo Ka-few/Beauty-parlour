@@ -1,0 +1,306 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffd700 0%, #ff69b4 100%);
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(255, 215, 0, 0.85); /* gold */
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.navbar a {
+  color: #fff;
+  font-weight: 600;
+  margin-left: 1rem;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ff69b4; /* pink */
+}
+
+/* Buttons */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  background: #ff69b4; /* pink */
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #ffd700; /* gold */
+  color: #333;
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  max-width: 600px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: #ff69b4; /* pink */
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, select, textarea {
+  padding: 0.7rem 1rem;
+  border-radius: 15px;
+  border: 1px solid #ffd700;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 6px #ff69b4;
+}
+
+/* Appointment Form */
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.appointment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.appointment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffe6f2; /* soft pink */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Button Variants */
+.btn.danger {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+.btn.danger:hover {
+  background-color: #e60039;
+}
+
+/* Messages */
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.message.success {
+  color: green;
+  background: #e6ffe6;
+  border: 1px solid #66cc66;
+}
+
+.message.error {
+  color: red;
+  background: #ffe6e6;
+  border: 1px solid #ff6666;
+}
+
+/* Form Card */
+.form-card {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background: #fff0f5; /* light pink */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.form-title {
+  color: #d6336c; /* darker pink */
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Input Fields */
+.form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #e6b8c7; /* soft pink border */
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form input:focus {
+  border-color: gold;
+  box-shadow: 0 0 5px gold;
+}
+
+/* Buttons */
+.form .btn {
+  width: 100%;
+  background: #ff4d6d; /* pink */
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  transition: background 0.3s;
+}
+
+.form .btn:hover {
+  background: #d6336c;
+}
+
+/* Footer Links */
+.form-footer {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.form-footer a {
+  color: gold;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.service-card {
+  background: rgba(255, 192, 203, 0.2); /* light pink glassy */
+  border: 2px solid gold;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.03);
+}
+
+.service-title {
+  font-weight: bold;
+  color: #e91e63; /* pink shade */
+}
+
+.service-price {
+  color: #d4af37; /* gold shade */
+  margin-bottom: 10px;
+}
+
+/* Auth Forms (Login & Register) */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  flex-direction: column;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e91e63; /* pink */
+  margin-bottom: 15px;
+}
+
+.form-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+
+.form-card input {
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.form-card input:focus {
+  border-color: #e91e63; /* pink highlight */
+}
+
+.btn.primary-btn {
+  background: linear-gradient(90deg, #e91e63, #d4af37); /* pink to gold */
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn.primary-btn:hover {
+  transform: scale(1.05);
+}
+
+.form-message {
+  margin-top: 10px;
+  color: #555;
+  font-size: 0.9rem;
+}

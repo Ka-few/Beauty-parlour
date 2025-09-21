@@ -18,16 +18,16 @@ export default function Register() {
         password
       });
       setMessage("Registration successful!");
-      navigate("/login"); // ✅ redirect
+      navigate("/login");
     } catch (err) {
       setMessage(err.response?.data?.error || "Registration failed");
     }
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
+    <div className="form-container">
+      <h2 className="form-title">Register</h2>
+      <form className="form-card" onSubmit={handleRegister}>
         <input
           type="text"
           placeholder="Full Name"
@@ -46,9 +46,11 @@ export default function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Register</button>
+        <button className="btn primary-btn" type="submit">
+          Register
+        </button>
       </form>
-      <p>{message}</p>
+      <p className="form-message">{message}</p>
     </div>
   );
 }
